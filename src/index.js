@@ -1,17 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
+import { FirebaseContext } from './context/firebase';
+import { initializeApp } from "firebase/app";
+
+const firebaseConfig = {
+    apiKey: "AIzaSyCg2BBEDh3O33NRRF3l7GK6MNhxJt6NiPM",
+    authDomain: "sasta-netflix-b1274.firebaseapp.com",
+    projectId: "sasta-netflix-b1274",
+    storageBucket: "sasta-netflix-b1274.appspot.com",
+    messagingSenderId: "239139405586",
+    appId: "1:239139405586:web:e98dd043244dd9415f3dcb",
+    measurementId: "G-CN9JCV97JW"
+  };
+
+const firebase=initializeApp(firebaseConfig);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+    <FirebaseContext.Provider value={{firebase}}>
+        <App/>
+    </FirebaseContext.Provider>
+ 
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
